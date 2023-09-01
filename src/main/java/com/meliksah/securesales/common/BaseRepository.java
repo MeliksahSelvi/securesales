@@ -5,10 +5,12 @@ import com.meliksah.securesales.exception.ApiException;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,16 +20,14 @@ import java.util.Optional;
  * @Created 30.08.2023
  */
 
+@Transactional
+@RequiredArgsConstructor
 public abstract class BaseRepository<E extends BaseEntity, ID> {
 
-    protected Class<E> domainClass;
+    protected final Class<E> domainClass;
 
     @Autowired
     private SessionFactory sessionFactory;
-
-    public BaseRepository(Class<E> domainClass) {
-        this.domainClass = domainClass;
-    }
 
     protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
