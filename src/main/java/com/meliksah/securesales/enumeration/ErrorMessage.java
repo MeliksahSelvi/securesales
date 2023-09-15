@@ -37,7 +37,8 @@ public enum ErrorMessage {
     NO_FOUND_INVOICE_BY_ID("No Found Invoice By Id"),
     NO_STATS_FOUND("No Stats Found"),
     UNABLE_TO_EXPORT_REPORT_FILE("Unable To Export Report File"),
-    ID_MUST_NOT_NULL("Id Must Not Be Null");
+    ID_MUST_NOT_NULL("Id Must Not Be Null"),
+    EMAIL_TYPE_KNOWN("Unable to send email.Email type unknown");
 
     private final String message;
 
